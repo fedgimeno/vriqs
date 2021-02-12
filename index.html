@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title>Vriqs!</title>
+        <style>
+            body {
+                margin: 0;
+                background: gray;
+            }
+            #gameScreen {
+                border: none;
+            }
+
+            .container {
+                width: 100vw;
+                height: 100vh;
+                font-family: "Quicksand", sans-serif;
+                font-size: 20px;
+                display: grid;
+
+                grid-template-columns: 180px 880px 1fr 1fr;
+                grid-template-rows: 600px;
+
+                gap: 10px;
+                padding: 10px;
+                box-sizing: border-box;
+            }
+
+            .container .main{
+                position:relative;
+                margin: 0;
+                padding: 0;
+            }
+
+            .container .info {
+                border: 1px solid black;
+                background: #A08080;
+                font-size: 18px;
+                color: navy;
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                grid-template-rows: repeat(16,1fr);
+            }
+
+            .container .info span {
+                display: flex;
+                justify-content: left;
+                align-items: center;
+                padding: 10px;
+                font-size: 15px;
+            }
+
+            .container .info #head1{                
+                background: #A0A080;
+                color: white;
+                font-weight: bold;
+            }
+
+            #popup {
+                display: none;
+                position: absolute;
+                border: 1px white solid;
+                border-radius: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container" class="container">
+            <div class = "info">
+                <span id="head1">Key</span><span id="head1">Function</span>
+                <span>Left</span><span>Move left</span>
+                <span>Right</span><span>Move Right</span>
+                <span>P</span><span>Pause</span>
+                
+            </div>
+            <div id="main" class = "main">
+                <canvas id="gameScreen" width="880" height="660"></canvas>
+            </div>
+            <div></div>
+        </div>
+    </body>
+    <script type="module" src="./index.js"></script>
+</html>
