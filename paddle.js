@@ -2,8 +2,11 @@ import {COLORS} from "./constants.js"
 export default class Paddle {
 
     constructor(game) {
+        this.image = new Image()
         this.width = 120
         this.height = 20
+        this.image = new Image(this.width, this.height)
+        this.image.src ="./assets/paddle.png"
         this.pos = {}
         this.game = game
         this.max_speed = 600
@@ -42,7 +45,8 @@ export default class Paddle {
     }
 
     draw (ctx){
-        ctx.fillStyle = COLORS.PURPLE
-        ctx.fillRect (this.pos.x, this.pos.y, this.width, this.height)
+        /*ctx.fillStyle = COLORS.PURPLE
+        ctx.fillRect (this.pos.x, this.pos.y, this.width, this.height)*/
+        ctx.drawImage(this.image, this.pos.x, this.pos.y)
     }
 }

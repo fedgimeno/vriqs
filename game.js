@@ -55,12 +55,15 @@ export default class Game {
     }
 
     init () {
+        this.win = false;
         this.bricks = []
         this.lives = CSTS.MAX_LIVES
         this.score = 0
         this.curr_level = 0
         this.bricks = this.levels.load (this.curr_level, this.bricks)
         this.gamestate = CSTS.GAMESTATE.MENU;
+        this.paddle.reset()
+        this.ball.reset()
     }
 
     clear (ctx) {
