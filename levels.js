@@ -4,7 +4,7 @@ export default class Levels {
     constructor (game) {
         this.game = game
         this.levels = [ 
-            [0,0,0,0,0,0,0,0,0,1],
+            //[0,0,0,0,0,0,0,0,0,1],
             [   
                 0,0,0,0,0,0,0,0,0,0,0,      
                 0,0,0,0,0,0,0,0,0,0,0,
