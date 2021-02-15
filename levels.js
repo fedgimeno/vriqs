@@ -5,6 +5,7 @@ export default class Levels {
         this.game = game
         this.levels = [ 
             //[0,0,0,0,0,0,0,0,0,1],
+            //Level1
             [   
                 0,0,0,0,0,0,0,0,0,0,0,      
                 0,0,0,0,0,0,0,0,0,0,0,
@@ -16,7 +17,7 @@ export default class Levels {
                 0,0,0,0,0,0,0,0,0,0,0,
                 1,1,1,1,1,1,1,1,1,1,1
             ],
-
+            //Level2
             [         
                 0,0,0,0,0,0,0,0,0,0,0,
                 0,1,0,1,0,1,0,1,0,1,0,
@@ -29,7 +30,7 @@ export default class Levels {
                 0,0,0,0,1,0,1,0,0,0,0,
                 0,0,0,0,0,1,0,0,0,0,0
             ],
-
+            //Level3
             [   0,0,0,0,0,0,0,0,0,0,0,
                 0,0,0,0,0,0,0,0,0,0,0,
                 2,2,2,2,2,2,2,2,2,2,2,
@@ -40,8 +41,21 @@ export default class Levels {
                 0,0,0,2,1,1,1,2,0,0,0,
                 0,0,2,1,1,1,1,1,2,0,0,
                 0,2,1,1,1,1,1,1,1,2,0,
-                0,0,0,0,2,3,2,0,0,0,0,
-                
+                0,0,0,0,2,3,2,0,0,0,0,                
+            ],
+            //Level4
+            [
+                0,0,0,0,0,0,0,0,0,0,0,
+                0,0,0,0,0,0,0,0,0,0,0,
+                1,1,1,0,0,0,0,0,1,1,1,
+                1,1,2,1,0,0,0,1,2,1,1,
+                1,1,3,2,2,0,2,2,3,1,3,
+                1,1,3,3,4,4,4,3,3,1,1,
+                1,1,1,1,2,2,2,1,1,1,1,
+                1,1,1,1,1,3,1,1,1,1,1,
+                0,0,1,1,1,1,1,1,1,0,0,
+                0,0,0,1,1,1,1,1,0,0,0,
+                0,0,0,0,3,2,3,0,0,0,0
             ]
         ]
     }
@@ -61,14 +75,18 @@ export default class Levels {
             }
 
             if (val > 0){
-                let color = COLORS.GREEN
+                let img_src = "./assets/green_brick.png"                   
                 let hp = val
-                if (val === 2) {                     
-                    color = COLORS.LIGHT_BLUE 
+                if (val === 2) {  
+                    img_src = "./assets/blue_brick.png"                   
+                    //color = COLORS.LIGHT_BLUE 
                 } else if (val === 3) {
-                    color = COLORS.RED
+                    img_src = "./assets/red_brick.png"                   
+                    //color = COLORS.RED
+                } else if (val === 4) {
+                    img_src = "./assets/gray_brick.png"                   
                 }
-                bricks.push (new Brick (pos, bw, bh, color, hp, this.game) )
+                bricks.push (new Brick (pos, bw, bh, img_src, hp, this.game) )
             }
         } ) 
 

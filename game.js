@@ -19,31 +19,28 @@ export default class Game {
             document.getElementById("main")
         )
         this.pauseModal.setBgColor(CSTS.COLORS.WHITE)
-        this.pauseModal.setFgColor(CSTS.COLORS.BLUE)
         this.pauseModal.setBorder(CSTS.COLORS.LIGHT_BLUE, 5, "solid", 10)
 
         this.pauseLabel = new UI.Label(0,0,"Verdana","sans-serif",CSTS.PAUSE_TEXT,this.pauseModal);
-        this.pauseLabel.setTextColor(CSTS.COLORS.BLUE)
-        this.pauseLabel.setTextSize(30)
+        this.pauseLabel.setTextColor(CSTS.COLORS.LIGHT_BLUE)
+        this.pauseLabel.setTextSize(22)
         this.pauseLabel.expandAndCenter()
         this.pauseModal.append(this.pauseLabel)
 
         //The start dialog
         this.startModal = new UI.Modal(
             this.width/2 - CSTS.READY_WIN_W/2,
-            //this.height/2 - CSTS.READY_WIN_H/2,
-            330 - 40,
+            this.height/2 - CSTS.READY_WIN_H/2,            
             CSTS.READY_WIN_W,
             CSTS.READY_WIN_H,
             document.getElementById("main")
         )
         this.startModal.setBgColor(CSTS.COLORS.WHITE)
-        this.startModal.setFgColor(CSTS.COLORS.BLUE)
         this.startModal.setBorder(CSTS.COLORS.LIGHT_BLUE, 5, "solid", 10)
 
         this.readyLabel = new UI.Label(0,0,"Verdana","sans-serif",CSTS.MENU_TEXT,this.startModal);
-        this.readyLabel.setTextColor(CSTS.COLORS.BLUE)
-        this.readyLabel.setTextSize(25)
+        this.readyLabel.setTextColor(CSTS.COLORS.LIGHT_BLUE)
+        this.readyLabel.setTextSize(22)
         this.readyLabel.expandAndCenter()
         this.startModal.append(this.readyLabel)
 

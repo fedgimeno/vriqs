@@ -1,4 +1,4 @@
-import { GAMESTATE } from "./constants.js";
+import * as CSTS from "./constants.js";
 import * as coll from "/collision.js"
 export default class Ball {
     
@@ -42,7 +42,7 @@ export default class Ball {
         //Ball with game bottom
         if (ball_btm > this.game.height) {
             this.game.lives --;
-            this.game.gamestate = GAMESTATE.MENU
+            this.game.gamestate = CSTS.GAMESTATE.MENU
             this.reset()
             this.game.paddle.reset()
         }
@@ -62,7 +62,7 @@ export default class Ball {
     draw (ctx){
         ctx.beginPath()
         ctx.arc(this.pos.x, this.pos.y, this.size, 0, 2 * Math.PI, false)
-        ctx.fillStyle = "#FF0000"
+        ctx.fillStyle = CSTS.COLORS.YELLOW
         ctx.fill()
     }
 }
