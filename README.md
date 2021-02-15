@@ -1,5 +1,5 @@
 # vriqs
-A break breaker game developed in JavaScript
+A brick breaker game developed in JavaScript
 
 To run this game locally, you can quickly start a web server as follows:
 1. Clone this repository in your folder of choice.
