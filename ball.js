@@ -67,18 +67,20 @@ export default class Ball {
             let a = 0
             if (dist <= 2){
                 this.angle = 80
-            } else if (dist > 2 && dist < 15){
+            } else if (dist > 2 && dist < 10){
                 this.angle = 70
-            } else if (dist > 15 && dist < 30){
+            } else if (dist > 10 && dist < 20){
+                this.angle = 60
+            } else if (dist > 20 && dist < 30){
                 this.angle = 50
-            } else if (dist > 30 && dist < 45){
-                this.angle = 30
-            } else if (dist > 45){
+            } else if (dist > 30 && dist < 40){
+                this.angle = 40            
+            } else if (dist > 40 && dist < 50){
+                this.angle = 30            
+            } else if (dist > 50){
                 this.angle = 20
             }
-            
-        
-                        
+                    
             this.velocity.y = -this.velocity.y
         }
     }
