@@ -91,7 +91,7 @@ export default class Game {
             if (this.bricks.length === 0) {
                 this.gamestate = CSTS.GAMESTATE.MENU
                 this.curr_level ++;
-                console.log (this.curr_level,this.levels.levels.length)
+
                 if (this.curr_level === this.levels.levels.length){
                     this.win = true;
                     this.gamestate = CSTS.GAMESTATE.GAMEOVER

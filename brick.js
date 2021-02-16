@@ -11,7 +11,6 @@ export default class Brick{
         this.deleteme = false;
         this.image = new Image(this.width, this.height)
         this.image.src = img_src
-        console.log(this.image.src)
     }
 
     update (dt) {
