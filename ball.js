@@ -60,27 +60,9 @@ export default class Ball {
         //Ball collides with the paddle top
         if (coll.ballCollidesTop(this,this.game.paddle)){
             let paddle_x = this.game.paddle.pos.x
-            let pad_vel_x = this.game.paddle.velocity
             let paddle_c = paddle_x + (this.game.paddle.width / 2)
-            let dist = Math.abs(paddle_c - this.pos.x)
-
-            let a = 0
-            if (dist <= 2){
-                this.angle = 80
-            } else if (dist > 2 && dist < 10){
-                this.angle = 70
-            } else if (dist > 10 && dist < 20){
-                this.angle = 60
-            } else if (dist > 20 && dist < 30){
-                this.angle = 50
-            } else if (dist > 30 && dist < 40){
-                this.angle = 40            
-            } else if (dist > 40 && dist < 50){
-                this.angle = 30            
-            } else if (dist > 50){
-                this.angle = 20
-            }
-                    
+            let dist = Math.round(Math.abs(paddle_c - this.pos.x))
+            this.angle = coll.getAngle(dist, 6, 80, 20)
             this.velocity.y = -this.velocity.y
         }
     }
@@ -91,4 +73,6 @@ export default class Ball {
         ctx.fillStyle = CSTS.COLORS.YELLOW
         ctx.fill()
     }
+
+    
 }

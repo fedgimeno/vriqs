@@ -17,6 +17,8 @@ export default class Brick{
 
         if (this.ballCollides()){
             this.hp --
+            let spin = Math.floor(Math.random() * (5 + 5) - 5)
+            this.game.ball.angle += spin;
             if (this.hp < 1) this.deleteme = true
             this.game.score += 100;
         }
@@ -25,25 +27,23 @@ export default class Brick{
     ballCollides () {
         let ball = this.game.ball;
         let collided = false;
+        
         //Ball collides with top or bottom of brick
-        if (coll.ballCollidesTop(ball, this) || coll.ballCollidesBottom(ball, this)){
+
+        if (coll.ballCollidesTop(ball, this) || coll.ballCollidesBottom(ball, this)){            
             ball.velocity.y = -ball.velocity.y            
             collided = true
         }
         //Ball collides with left or right of brick
-        if (coll.ballCollidesLeft(ball, this) || coll.ballCollidesRight(ball, this)){            
-            ball.velocity.x = -ball.velocity.x            
+        if (coll.ballCollidesLeft(ball, this) || coll.ballCollidesRight(ball, this)){
+            ball.velocity.x = -ball.velocity.x
             collided = true
         } 
 
+        
         return collided
     }
     draw (ctx) {
-        /*ctx.fillStyle = this.color
-        ctx.fillRect(this.pos.x, this.pos.y, this.width, this.height)
-        ctx.lineWidth = 4;
-        ctx.strokeStyle = "black";
-        ctx.strokeRect(this.pos.x, this.pos.y, this.width, this.height);*/
         ctx.drawImage(this.image, this.pos.x, this.pos.y)
     }
 }

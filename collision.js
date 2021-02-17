@@ -45,3 +45,21 @@ export function ballCollidesRight (ball, colObj){
     }
 
 }
+
+export function getAngle(dist, chunks, max_ang, min_ang){
+
+    let chunk_sz = (max_ang - min_ang) / chunks
+    if (dist <= 1){
+        return max_ang
+    }
+
+    for (let i = 0; i < chunks; i++){                
+        if (dist > chunk_sz * i && dist <= chunk_sz * (i+1)){        
+            return max_ang - (chunk_sz * (i+1))
+        }    
+    }
+
+    if (dist >= chunk_sz * chunks){
+        return min_ang
+    }
+}
