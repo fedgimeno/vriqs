@@ -17,8 +17,13 @@ export default class Brick{
 
         if (this.ballCollides()){
             this.hp --
-            let spin = Math.floor(Math.random() * (5 + 5) - 5)
+            let spin = Math.floor(Math.random() * (8 + 8) - 8)
             this.game.ball.angle += spin;
+            if (spin < 0 && this.game.ball.angle <= 30)
+                this.game.ball.angle = 30
+            if (spin > 0 && this.game.ball.angle >= 70)
+                this.game.ball.angle = 70
+            
             if (this.hp < 1) this.deleteme = true
             this.game.score += 100;
         }
@@ -30,12 +35,12 @@ export default class Brick{
         
         //Ball collides with top or bottom of brick
 
-        if (coll.ballCollidesTop(ball, this) || coll.ballCollidesBottom(ball, this)){            
+        if (coll.ballCollidesTop(ball, this) || coll.ballCollidesBottom(ball, this)){
             ball.velocity.y = -ball.velocity.y            
             collided = true
         }
         //Ball collides with left or right of brick
-        if (coll.ballCollidesLeft(ball, this) || coll.ballCollidesRight(ball, this)){
+        else if (coll.ballCollidesLeft(ball, this) || coll.ballCollidesRight(ball, this)){
             ball.velocity.x = -ball.velocity.x
             collided = true
         } 

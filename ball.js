@@ -4,15 +4,14 @@ export default class Ball {
     
     constructor (game) {
         this.game = game        
-
         this.pos = {}
         this.reset();
     }
 
     reset (){
         this.velocity = {
-            x: 350,
-            y: 350
+            x: 380,
+            y: 380
         };
         
         this.size = 8;
@@ -44,12 +43,14 @@ export default class Ball {
         }
 
         //Ball with game bottom
+        
         if (ball_btm > this.game.height) {
             this.game.lives --;
             this.game.gamestate = CSTS.GAMESTATE.MENU
-            this.reset()
-            this.game.paddle.reset()
+            //this.reset()
+            //this.game.paddle.reset()
         }
+        
 
         //Ball with game top
         else if (ball_top < 0){            
@@ -73,6 +74,4 @@ export default class Ball {
         ctx.fillStyle = CSTS.COLORS.YELLOW
         ctx.fill()
     }
-
-    
 }

@@ -8,14 +8,17 @@ let ctx = canvas.getContext("2d")
 let game = new Game (canvas.width, canvas.height)
 new InputHandler(game)
 let lastTime = 0;
+let fps
+
 function gameLoop (timeStamp) {
-    let dt = (timeStamp - lastTime) / 1000
+    const dt = (timeStamp - lastTime) * .001
+    fps = Math.round(1 / dt)
     lastTime = timeStamp
     game.update(dt)
     game.draw(ctx)
-    requestAnimationFrame(gameLoop);
+    requestAnimationFrame(gameLoop)
 }
+requestAnimationFrame(gameLoop)
 
-requestAnimationFrame(gameLoop);
 
 

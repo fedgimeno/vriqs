@@ -1,4 +1,4 @@
-import {COLORS} from "./constants.js"
+import * as CSTS from "./constants.js"
 export default class Paddle {
 
     constructor(game) {
@@ -14,6 +14,8 @@ export default class Paddle {
     }
 
     reset() {
+        this.dying_ctr = 0
+        this.dying_anim_ctr = 0
         this.pos.x = this.game.width / 2 - this.width / 2
         this.pos.y = this.game.height - this.height - 40
         this.velocity = 0
@@ -32,6 +34,7 @@ export default class Paddle {
     }
 
     update (dt){
+
         //console.log ("paddle update")
         this.pos.x += this.velocity * dt
 
@@ -45,8 +48,9 @@ export default class Paddle {
     }
 
     draw (ctx){
-        /*ctx.fillStyle = COLORS.PURPLE
-        ctx.fillRect (this.pos.x, this.pos.y, this.width, this.height)*/
+        if (this.game.gamestate === CSTS.GAMESTATE.PLYR_DYING){
+            if (!this.dying_anim_ctr) return
+        }
         ctx.drawImage(this.image, this.pos.x, this.pos.y)
     }
 }

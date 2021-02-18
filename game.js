@@ -64,7 +64,7 @@ export default class Game {
     }
 
     clear (ctx) {
-        ctx.fillStyle = CSTS.COLORS.BLACK_30
+        ctx.fillStyle = CSTS.COLORS.BLACK
         ctx.fillRect(0, 0, this.width, this.height);
     }
 
@@ -76,8 +76,13 @@ export default class Game {
     }
 
     update (dt){
+
+        if (this.gamestate === CSTS.GAMESTATE.MENU){
+            this.ball.reset()
+            this.paddle.reset()
+        }
         
-        if (this.gamestate === CSTS.GAMESTATE.RUNNING){
+        if (this.gamestate === CSTS.GAMESTATE.RUNNING || this.gamestate === CSTS.GAMESTATE.PLYR_DYING){
             this.bricks = this.bricks.filter ( (val, index, arr) => { return !val.deleteme } )
             this.bricks.forEach (brick => { brick.update(dt) })
             this.paddle.update(dt)
@@ -97,8 +102,8 @@ export default class Game {
                     this.gamestate = CSTS.GAMESTATE.GAMEOVER
                     return
                 }
-                this.ball.reset()
-                this.paddle.reset()
+                //this.ball.reset()
+                //this.paddle.reset()
                 this.bricks = this.levels.load (this.curr_level, this.bricks)
             }
         }
@@ -112,6 +117,7 @@ export default class Game {
 
         if (this.gamestate !== CSTS.GAMESTATE.GAMEOVER){
             this.clear(ctx)
+            this.createBG(ctx)
             this.paddle.draw(ctx)
             this.ball.draw(ctx)
             this.bricks.forEach (brick => { brick.draw(ctx) })
@@ -141,5 +147,23 @@ export default class Game {
             this.startModal.show()
             return
         }        
+    }
+
+    createBG (ctx) {
+        let w = this.width
+        let h = this.height
+        let nRow = 6
+        let nCol = 8
+
+        w /= nCol
+        h /= nRow
+        ctx.fillStyle = "#251010"
+        for (let i = 0; i < nRow; ++i) {
+            for (let j = 0, col = nCol / 2; j < col; ++j) {
+                ctx.rect(2 * j * w + (i % 2 ? 0 : w), i * h, w, h);
+            }
+        }
+    
+        ctx.fill();
     }
 }

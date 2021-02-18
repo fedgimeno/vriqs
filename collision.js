@@ -6,6 +6,7 @@ export function ballCollidesTop (ball, colObj)
         ball.pos.y + ball.size > colObj.pos.y && 
         ball.pos.y - ball.size < colObj.pos.y && 
         ball.velocity.y > 0){
+            ball.pos.y = colObj.pos.y - ball.size
             return true
         }
 }
@@ -18,6 +19,7 @@ export function ballCollidesBottom (ball, colObj)
         ball.pos.y - ball.size < colObj.pos.y + colObj.height && 
         ball.pos.y + ball.size > colObj.pos.y + colObj.height && 
         ball.velocity.y < 0 ){
+            ball.pos.y = colObj.pos.y + ball.size + colObj.height
             return true
         }
 }
@@ -29,6 +31,7 @@ export function ballCollidesLeft (ball, colObj){
         ball.pos.y + ball.size > colObj.pos.y &&
         ball.pos.y - ball.size < colObj.pos.y + colObj.height &&
         ball.velocity.x < 0) {
+            ball.pos.x = colObj.pos.x + ball.size + colObj.width
             return true
     }
 
@@ -41,6 +44,7 @@ export function ballCollidesRight (ball, colObj){
         ball.pos.y + ball.size > colObj.pos.y &&
         ball.pos.y - ball.size < colObj.pos.y + colObj.height &&
         ball.velocity.x > 0) {
+            ball.pos.x = colObj.pos.x - ball.size
             return true
     }
 
